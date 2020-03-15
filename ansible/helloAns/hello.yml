@@ -1,0 +1,51 @@
+- hosts: all
+  connection: ssh
+  vars:
+        - hellovar: nestHello
+        - ports:
+            - 80
+            - 91
+            - 83
+
+  vars_files:
+          - vars.yml
+  tasks:
+        - name: This task uses ssh.
+          ping:
+
+        - name: echo var.
+          shell: "echo {{ hellovar }}"
+
+        - name: install packages         
+          yum: name={{ var1 }} 
+
+        - name: install package
+          yum: name={{ var2 }}
+
+        - name: copy template
+          template: src=nginx.conf.j2 dest=/tmp/nginx.conf
+
+        - name: copy template with for sync
+          template: src=for.conf.j2 dest=/tmp/for.conf
+
+
+        - name: with items
+          shell: " echo {{ item }}"
+          with_items:
+                  - hello
+                  - world
+                  - ShangHai
+        
+        - name: When hostname is db
+          shell: |
+                  echo hello
+                  echo "This is my name"
+          when: ansible_hostname == "db"
+
+        - name: with item dict
+          shell: |
+               echo "Name: {{ item.name }} , Age: {{ item.age }}"
+          with_items:
+                  - { name: "wxdlong", age: "12" }
+                  - { name: "bingo",   age: "33" }
+                  - { name: "yjmnrg",  age:  "44"}

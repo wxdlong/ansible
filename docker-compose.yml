@@ -1,0 +1,54 @@
+version: '3.0'
+services:
+
+  ansible:
+    build: 
+      context: .
+      dockerfile: DockerFile 
+    image: ansible
+    container_name: ansible
+    hostname: ansible
+    privileged: true
+    tty: true
+    depends_on: 
+      - db
+      - web
+      - proxy
+    volumes: 
+      - ${PWD}/ansible:/home/ansible
+    environment: 
+      ANSIBLE_HOST_KEY_CHECKING: "False"
+    ports: 
+      - "22"
+  db:
+    build: 
+      context: .
+      dockerfile: DockerFile_base
+    image: testans
+    container_name: db
+    hostname: db
+    privileged: true
+    ports:
+      - "22"
+
+  web:
+    build: 
+      context: .
+      dockerfile: DockerFile_base
+    image: testans
+    container_name: web
+    hostname: web
+    privileged: true
+    ports:
+      - "22"
+
+  proxy:
+    build: 
+      context: .
+      dockerfile: DockerFile_base
+    image: testans
+    container_name: proxy
+    hostname: proxy
+    privileged: true
+    ports:
+      - "22"

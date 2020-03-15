@@ -1,0 +1,29 @@
+@startmindmap
++ <&people>ansible
+++ conf(/etc/ansible)
++++ ansible.conf
++++ hosts
+
+++ ad-hoc commands
++++ ansible all -m ping
+
++++ ansible localhost -a "date"
++++ ansible localhost -m shell -a "echo hello"
+
+++ notify
++++ handler
+
+++ template
++++ jinjia2
++++ template/**.conf.j2
++++ {% for port in ports %} {% endfor %}
++++ {% if %}
+
+-- control
+--- when {{ var }} == "var"
+--- with_item
+
+-- filter
+-- roles
+
+@endmindmap

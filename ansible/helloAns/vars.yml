@@ -1,0 +1,8 @@
+---
+var1: rpm
+var2: nginx
+address:
+       - name: "Beijing"
+         value: "33"
+       - name: "NanJing"
+         value: "44"

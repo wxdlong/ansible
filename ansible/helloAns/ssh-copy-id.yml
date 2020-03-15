@@ -1,0 +1,11 @@
+- hosts: localhost
+  vars:
+    - username: root
+
+  tasks:
+    - name: copy ssh id to remote server
+      expect: 
+            command: ssh-copy-id root@db
+            echo: True
+            responses:
+                    "*password": "123456"

@@ -1,0 +1,11 @@
+{% for port in ports %}
+  server{
+           listen {{ port }}
+}
+
+{% endfor %}
+
+{% for add in address %}
+
+    Address:[name:{{ add.name }}, value:{{ add.value }}]
+{% endfor %}
