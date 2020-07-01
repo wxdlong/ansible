@@ -10,12 +10,13 @@ services:
     hostname: ansible
     privileged: true
     tty: true
+    working_dir: /root/ansible
     depends_on: 
       - db
       - web
       - proxy
     volumes: 
-      - ${PWD}/ansible:/home/ansible
+      - ${PWD}/ansible:/root/ansible
     environment: 
       ANSIBLE_HOST_KEY_CHECKING: "False"
     ports: 

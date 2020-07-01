@@ -1,7 +1,8 @@
-FROM centos:8
+FROM centos:7.6.1810
 LABEL "Author"="wxdlong@qq.com"
-RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
+RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     yum install -y ansible openssh-server openssh-clients iproute vim man expect && \
+    yum install -y wget tar unzip && \
     yum clean all
 
 

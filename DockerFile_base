@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7.6.1810
 LABEL "Author"="wxdlong@qq.com"
 
 RUN yum install -y openssh-server openssh-clients iproute vim && \
